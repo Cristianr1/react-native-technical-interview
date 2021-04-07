@@ -1,35 +1,14 @@
 import * as React from 'react';
-import { View, Text, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ToolBar from './ToolBar';
 import { primary } from '../theme/colors';
 import LibraryStackScreen from './stacks/LibraryStackScreen';
-
-const WishListScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Wishlist!</Text>
-  </View>
-);
-const AddNewScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Add New!</Text>
-  </View>
-);
-
-const RentalsScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Rentals!</Text>
-  </View>
-);
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+import WishListScreen from '../screens/WishListScreen';
+import AddNewScreen from '../screens/AddNewScreen';
+import RentalsScreen from '../screens/RentalsScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 const indexNavigation = () => (

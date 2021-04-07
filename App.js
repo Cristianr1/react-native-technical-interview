@@ -1,9 +1,15 @@
-import 'react-native-gesture-handler';
-import * as React from 'react';
+import React from 'react';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import { Provider } from 'react-redux';
+import { store, persistor } from './src/store/store';
 import Navigation from './src/navigation/index';
 
-export default function App() {
-  return (
-    <Navigation />
-  );
-}
+const App = () => (
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Navigation />
+    </PersistGate>
+  </Provider>
+);
+
+export default App;

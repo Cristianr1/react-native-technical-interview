@@ -1,14 +1,12 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable global-require */
 import React from 'react';
-import { Image, Dimensions } from 'react-native';
-
-const { width } = Dimensions.get('window');
+import { Image } from 'react-native';
 
 const ICNotifications = () => (
   <Image
     source={require('../../assets/NavigationBar/ic_notifications.png')}
-    style={{ marginLeft: 15 }}
+    style={{ marginLeft: 20 }}
   />
 );
 
