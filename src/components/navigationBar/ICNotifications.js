@@ -6,7 +6,7 @@ import { Image } from 'react-native';
 const ICNotifications = () => (
   <Image
     source={require('../../assets/NavigationBar/ic_notifications.png')}
-    style={{ marginLeft: 20 }}
+    style={{ marginLeft: 10 }}
   />
 );
 

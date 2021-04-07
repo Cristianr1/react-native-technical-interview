@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,8 +12,8 @@ import { fetchBooks } from '../store/actions/booksAction';
 import styles from '../theme/styleLibrary';
 
 const LibraryScreen = ({ navigation }) => {
-  console.log('lol')
   const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
   const { booksData, didInvalidate, errMessage } = useSelector((state) => state.books);
   useEffect(() => {
     dispatch(fetchBooks());
