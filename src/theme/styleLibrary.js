@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {primary, green} from './colors';
+import { green } from './colors';
 
 export default StyleSheet.create({
   container: {
@@ -15,10 +15,12 @@ export default StyleSheet.create({
   },
   detail: {
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 20,
     padding: 30,
+    marginTop: 10,
     marginBottom: 10,
     marginHorizontal: 15,
+    elevation: 10,
   },
   imageBook: {
     height: 80,
@@ -33,7 +35,7 @@ export default StyleSheet.create({
     marginRight: 20,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     width: 200,
   },
@@ -50,5 +52,30 @@ export default StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 30,
     width: '90%',
+  },
+  suggestions: {
+    height: 120,
+    backgroundColor: 'white',
+    margin: 7,
+    alignItems: 'center',
+    borderRadius: 10,
+    padding: 10,
+  },
+  titleSuggestions: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  comments: {
+    backgroundColor: 'white',
+    marginHorizontal: 17,
+    marginTop: 10,
+    borderRadius: 10,
+    padding: 15,
+  },
+  comment: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
   },
 });

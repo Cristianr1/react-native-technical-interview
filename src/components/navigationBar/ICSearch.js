@@ -5,15 +5,20 @@ import {
   View, TouchableOpacity, Image, Dimensions,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import { useDispatch } from 'react-redux';
+import updateSearch from '../../store/actions/searchAction';
 
 const { width } = Dimensions.get('window');
 
 const ICSearch = () => {
+  const dispatch = useDispatch();
+
   const [activateSearch, setActivateSearch] = useState(false);
   const [search, setSearch] = useState('');
 
-  const updateSearch = (text) => {
+  const onUpdateSearch = (text) => {
     setSearch(text);
+    dispatch(updateSearch(text));
   };
 
   return (
@@ -24,7 +29,7 @@ const ICSearch = () => {
       && (
       <SearchBar
         placeholder="Search Title..."
-        onChangeText={updateSearch}
+        onChangeText={onUpdateSearch}
         value={search}
         containerStyle={{
           width: width / 1.2,

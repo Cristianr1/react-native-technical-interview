@@ -1,5 +1,27 @@
 {
-  "sign_in": [],
+  "sign_in": [
+    {
+      "name": "Jdb",
+      "lastName": "Udhd",
+      "email": "cristianrch123@gmail.com",
+      "age": "19 años",
+      "id": 1
+    },
+    {
+      "name": "Criati",
+      "lastName": "Jsjs",
+      "email": "cristianrch123@gmail.com",
+      "age": "24 años",
+      "id": 2
+    },
+    {
+      "name": "Jzjd",
+      "lastName": "Kksjs",
+      "email": "cristianrch123@gmail.com",
+      "age": "",
+      "id": 3
+    }
+  ],
   "books": [
     {
       "id": 1,
@@ -8,7 +30,19 @@
       "genre": "Short story",
       "publisher": "Butterworth-Heinemann",
       "year": "1968",
-      "image_url": null
+      "image_url": null,
+      "comments": [
+        {
+          "id": 1,
+          "user": "John von Neumann",
+          "comment": "Mauris est sapien, faucibus eget ex eget, finibus euismod felis."
+        },
+        {
+          "id": 2,
+          "user": "Emmy Noether",
+          "comment": "Cras tincidunt augue quis sagittis pulvinar. Suspendisse potenti. Ut et justo vel arcu efficitur mollis sed sit amet mi."
+        }
+      ]
     },
     {
       "id": 2,
@@ -26,7 +60,19 @@
       "genre": "suspense",
       "publisher": "Little, Brown",
       "year": "1985",
-      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg"
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg",
+      "comments": [
+        {
+          "id": 1,
+          "user": "John von Neumann",
+          "comment": "Mauris est sapien, faucibus eget ex eget, finibus euismod felis."
+        },
+        {
+          "id": 2,
+          "user": "Emmy Noether",
+          "comment": "Cras tincidunt augue quis sagittis pulvinar. Suspendisse potenti. Ut et justo vel arcu efficitur mollis sed sit amet mi."
+        }
+      ]
     },
     {
       "id": 4,

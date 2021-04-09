@@ -10,6 +10,7 @@ import rootReducer from './reducers/index';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage, // Storage Method (React Native)
+  blacklist: ['search'],
 };
 
 const logger = createLogger();

@@ -1,19 +1,18 @@
+/* eslint-disable global-require */
 import React from 'react';
 import {
   View, Text, TouchableOpacity, Image, FlatList, ScrollView,
 } from 'react-native';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from '../theme/styleLibrary';
 import { primary } from '../theme/colors';
 
 const DetailScreen = ({ navigation, route }) => {
   const { booksData } = useSelector((state) => state.books);
-
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      style={{
-        height: 120, backgroundColor: 'white', margin: 7, alignItems: 'center', borderRadius: 10, padding: 10,
-      }}
+      style={styles.suggestions}
       onPress={() => navigation.navigate('Detail', {
         book: item,
       })}
@@ -22,7 +21,7 @@ const DetailScreen = ({ navigation, route }) => {
         source={{ uri: item.image_url }}
         style={{ ...styles.imageBook, marginRight: 0 }}
       />
-      <Text style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'center' }}>
+      <Text style={styles.titleSuggestions}>
         {item.title}
       </Text>
     </TouchableOpacity>
@@ -30,7 +29,7 @@ const DetailScreen = ({ navigation, route }) => {
 
   return (
     <ScrollView
-      style={styles.container}
+      style={[styles.container, { marginTop: 25 }]}
       persistentScrollbar
     >
       <View style={styles.detail}>
@@ -65,9 +64,39 @@ const DetailScreen = ({ navigation, route }) => {
           horizontal
         />
       </View>
-      <View style={{ height: 100, backgroundColor: 'red', marginTop: 10 }} />
+      {route.params.book.comments && (
+      <View style={styles.comments}>
+        {route.params.book.comments.map((item) => (
+          <View
+            style={styles.comment}
+            key={item.id}
+          >
+            <Image
+              source={item.id % 2
+                ? require('../assets/General/img_user1.png') : require('../assets/General/img_user2.png')}
+              style={{ marginRight: 10 }}
+            />
+            <View>
+              <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
+                {item.user}
+              </Text>
+              <Text style={{ fontSize: 14, width: '35%' }}>
+                {item.comment}
+              </Text>
+            </View>
+          </View>
+        ))}
+      </View>
+      )}
     </ScrollView>
   );
+};
+
+DetailScreen.propTypes = {
+  navigation: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  route: PropTypes.shape({
+    params: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  }).isRequired,
 };
 
 export default DetailScreen;

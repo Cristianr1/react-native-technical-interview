@@ -13,11 +13,23 @@ import styles from '../theme/styleLibrary';
 
 const LibraryScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const [search, setSearch] = useState('');
   const { booksData, didInvalidate, errMessage } = useSelector((state) => state.books);
+  const [filterBooks, setFilterBooks] = useState([]);
   useEffect(() => {
     dispatch(fetchBooks());
+    setFilterBooks(booksData);
   }, []);
+
+  const search = useSelector((state) => state.search);
+  useEffect(() => {
+    if (search) {
+      const newArr = booksData
+        .filter((book) => book.title.toLowerCase().includes(search.toLowerCase()));
+      setFilterBooks(newArr);
+    } else {
+      setFilterBooks(booksData);
+    }
+  }, [booksData, search]);
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
@@ -48,7 +60,7 @@ const LibraryScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={booksData}
+        data={filterBooks}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
       />
@@ -56,9 +68,8 @@ const LibraryScreen = ({ navigation }) => {
   );
 };
 
-// LibraryScreen.propTypes = {
-//   focused: PropTypes.bool.isRequired,
-//   route: PropTypes.shape({ name: PropTypes.string }).isRequired,
-// };
+LibraryScreen.propTypes = {
+  navigation: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};
 
 export default LibraryScreen;

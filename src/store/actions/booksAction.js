@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import { ip, port } from '../../parameters';
+
 export const requestBooks = () => ({
   type: 'REQUEST_BOOKS',
 });
@@ -14,7 +16,7 @@ export const invalidateBooks = (message) => ({
 });
 
 export const fetchBooks = () => {
-  const url = 'http://192.168.0.19:3000/books';
+  const url = `http://${ip}:${port}/books`;
   return async (dispatch) => {
     dispatch(requestBooks());
     try {
