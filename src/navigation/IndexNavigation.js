@@ -2,7 +2,6 @@ import * as React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 import ToolBar from './ToolBar';
 import { primary } from '../theme/colors';
@@ -14,7 +13,6 @@ import RentalsScreen from '../screens/RentalsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 const IndexNavigation = () => {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -22,36 +20,38 @@ const IndexNavigation = () => {
   return (
     <NavigationContainer>
       <StatusBar translucent backgroundColor="transparent" />
-      {isLoggedIn ? (
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            // eslint-disable-next-line react/prop-types
-            tabBarIcon: ({ focused }) => (
-              <ToolBar focused={focused} route={route} />
-            )
-            ,
-          })}
-          tabBarOptions={{
-            activeTintColor: primary,
-            inactiveTintColor: 'gray',
-          }}
-        >
-          <Tab.Screen name="Library" component={LibraryStackScreen} />
-          <Tab.Screen name="WishList" component={WishListScreen} />
-          <Tab.Screen name="AddNew" component={AddNewScreen} />
-          <Tab.Screen name="Rentals" component={RentalsScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      )
-        : (
-          <Stack.Navigator>
-            <Stack.Screen
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          // eslint-disable-next-line react/prop-types
+          tabBarIcon: ({ focused }) => (
+            <ToolBar focused={focused} route={route} />
+          )
+          ,
+        })}
+        tabBarOptions={{
+          activeTintColor: primary,
+          inactiveTintColor: 'gray',
+        }}
+      >
+        {isLoggedIn ? (
+          <>
+
+            <Tab.Screen name="Library" component={LibraryStackScreen} />
+            <Tab.Screen name="WishList" component={WishListScreen} />
+            <Tab.Screen name="AddNew" component={AddNewScreen} />
+            <Tab.Screen name="Rentals" component={RentalsScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </>
+        )
+          : (
+            <Tab.Screen
               name="Login"
               component={LoginScreen}
-              options={{ headerShown: false }}
+              options={{ tabBarVisible: false }}
             />
-          </Stack.Navigator>
-        )}
+          )}
+      </Tab.Navigator>
+
     </NavigationContainer>
   );
 };

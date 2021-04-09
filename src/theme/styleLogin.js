@@ -13,6 +13,7 @@ export default StyleSheet.create({
   inputForm: {
     backgroundColor: 'white',
     borderRadius: 10,
+    color: 'black',
   },
   errorMessage: {
     alignSelf: 'flex-end',

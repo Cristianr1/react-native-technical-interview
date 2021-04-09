@@ -16,7 +16,6 @@ const AgeDropdown = ({ age, setAge }) => {
   }, []);
 
   return (
-
     <View style={{ backgroundColor: 'white', borderRadius: 10, marginTop: 20 }}>
       <RNPickerSelect
         placeholder={{

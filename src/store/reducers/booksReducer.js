@@ -2,7 +2,7 @@ const initialState = {
   isFetching: false,
   didInvalidate: false,
   booksData: null,
-  errMessage: null,
+  errMessage: '',
 };
 
 const booksReducer = (state = initialState, action) => {

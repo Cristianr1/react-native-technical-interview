@@ -9,16 +9,24 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchBooks } from '../store/actions/booksAction';
+import updateSearch from '../store/actions/searchAction';
 import styles from '../theme/styleLibrary';
+import ErrModal from '../components/ErrModal';
 
 const LibraryScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { booksData, didInvalidate, errMessage } = useSelector((state) => state.books);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const [filterBooks, setFilterBooks] = useState([]);
   useEffect(() => {
     dispatch(fetchBooks());
     setFilterBooks(booksData);
-  }, []);
+    setErrorMessage(errMessage);
+    setShowModal(didInvalidate);
+
+    return () => dispatch(updateSearch(''));
+  }, [didInvalidate]);
 
   const search = useSelector((state) => state.search);
   useEffect(() => {
@@ -53,12 +61,9 @@ const LibraryScreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  if (didInvalidate) {
-    return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text>{errMessage}</Text></View>;
-  }
-
   return (
     <View style={styles.container}>
+      <ErrModal message={errorMessage} isVisible={showModal} hide={() => setShowModal(false)} />
       <FlatList
         data={filterBooks}
         renderItem={renderItem}

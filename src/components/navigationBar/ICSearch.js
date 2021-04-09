@@ -2,9 +2,8 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import {
-  View, TouchableOpacity, Image, Dimensions,
+  View, TouchableOpacity, Image, Dimensions, TextInput,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import updateSearch from '../../store/actions/searchAction';
 
@@ -27,25 +26,25 @@ const ICSearch = () => {
     >
       {activateSearch
       && (
-      <SearchBar
-        placeholder="Search Title..."
-        onChangeText={onUpdateSearch}
-        value={search}
-        containerStyle={{
-          width: width / 1.2,
-          marginLeft: 5,
-          marginRight: 10,
-          backgroundColor: 'transparent',
-          borderTopColor: 'transparent',
-          borderBottomColor: 'transparent',
-        }}
-        inputContainerStyle={{ backgroundColor: 'gainsboro' }}
-      />
+        <TextInput
+          placeholder="Search Title..."
+          placeholderTextColor="gray"
+          style={{
+            backgroundColor: 'white',
+            width: width - 75,
+            marginRight: 10,
+            borderRadius: 15,
+          }}
+          onChangeText={(value) => onUpdateSearch(value)}
+          value={search}
+          maxLength={25}
+          autoCapitalize="words"
+        />
       )}
       <TouchableOpacity onPress={() => setActivateSearch(!activateSearch)}>
         <Image
           source={require('../../assets/NavigationBar/ic_search.png')}
-          style={{ marginRight: 10, marginTop: 5 }}
+          style={{ marginRight: 10, marginTop: 6 }}
         />
       </TouchableOpacity>
     </View>

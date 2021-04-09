@@ -1,26 +1,5 @@
 {
   "sign_in": [
-    {
-      "name": "Jdb",
-      "lastName": "Udhd",
-      "email": "cristianrch123@gmail.com",
-      "age": "19 años",
-      "id": 1
-    },
-    {
-      "name": "Criati",
-      "lastName": "Jsjs",
-      "email": "cristianrch123@gmail.com",
-      "age": "24 años",
-      "id": 2
-    },
-    {
-      "name": "Jzjd",
-      "lastName": "Kksjs",
-      "email": "cristianrch123@gmail.com",
-      "age": "",
-      "id": 3
-    }
   ],
   "books": [
     {

@@ -50,6 +50,15 @@ const ToolBar = ({ focused, route }) => {
         source={require('../assets/ToolBar/ic_settings_active.png')}
       />,
     },
+    {
+      name: 'Login',
+      image: <Image
+        source={require('../assets/ToolBar/ic_settings.png')}
+      />,
+      imageActive: <Image
+        source={require('../assets/ToolBar/ic_settings_active.png')}
+      />,
+    },
   ];
 
   return (
